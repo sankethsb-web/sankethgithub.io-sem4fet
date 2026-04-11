@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car Dodging Game</title>
+</head>
+<body style="margin:0; overflow:hidden; font-family:Arial; text-align:center;">
+
+<h2>🚗 Car Game (Use ← → keys)</h2>
+<p id="score">Score: 0</p>
+
+<div id="gameArea" style="
+  position:relative;
+  width:300px;
+  height:500px;
+  margin:auto;
+  background:#333;
+  overflow:hidden;
+  border:3px solid black;
+">
+
+  <!-- Player Car -->
+  <div id="car" style="
+    width:50px;
+    height:80px;
+    background:blue;
+    position:absolute;
+    bottom:10px;
+    left:125px;
+  "></div>
+
+  <!-- Enemy Car -->
+  <div id="enemy" style="
+    width:50px;
+    height:80px;
+    background:red;
+    position:absolute;
+    top:-100px;
+    left:125px;
+  "></div>
+
+</div>
+
+<script>
+let car = document.getElementById("car");
+let enemy = document.getElementById("enemy");
+let scoreDisplay = document.getElementById("score");
+
+let carX = 125;
+let enemyY = -100;
+let enemyX = 125;
+let score = 0;
+let gameRunning = true;
+
+// Move player
+document.addEventListener("keydown", function(e) {
+  if (!gameRunning) return;
+
+  if (e.key === "ArrowLeft" && carX > 0) {
+    carX -= 25;
+  }
+  if (e.key === "ArrowRight" && carX < 250) {
+    carX += 25;
+  }
+
+  car.style.left = carX + "px";
+});
+
+// Game loop
+function gameLoop() {
+  if (!gameRunning) return;
+
+  enemyY += 5;
+  enemy.style.top = enemyY + "px";
+
+  // Reset enemy
+  if (enemyY > 500) {
+    enemyY = -100;
+    enemyX = Math.floor(Math.random() * 5) * 50;
+    enemy.style.left = enemyX + "px";
+    score++;
+    scoreDisplay.innerText = "Score: " + score;
+  }
+
+  // Collision detection
+  if (
+    enemyY > 400 &&
+    enemyX < carX + 50 &&
+    enemyX + 50 > carX
+  ) {
+    gameRunning = false;
+    alert("💥 Game Over! Score: " + score);
+  }
+
+  requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+</script>
+
+</body>
+</html>
