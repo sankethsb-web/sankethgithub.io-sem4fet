@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personalized Introduction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            text-align: center;
+            padding-top: 100px;
+            color: white;
+        }
+        .card {
+            background: rgba(0,0,0,0.5);
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1 id="greeting">Welcome!</h1>
+    <p id="intro"></p>
+</div>
+
+<script>
+    // Ask user details
+    let name = prompt("Enter your name:");
+    let age = prompt("Enter your age:");
+    let course = prompt("Enter your course/field:");
+
+    // Show alert
+    alert("Hello " + name + "! Welcome to your personalized page.");
+
+    // Display on webpage
+    document.getElementById("greeting").innerText = "Hi, " + name + " 👋";
+    document.getElementById("intro").innerText =
+        "You are " + age + " years old and studying " + course + ".";
+</script>
+
+</body>
+</html>
