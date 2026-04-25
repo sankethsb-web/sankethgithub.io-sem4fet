@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tech Blog</title>
+
+    <style>
+        body {
+            background-color: lightgrey;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: square;
+            display: inline-block;
+            text-align: left;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 6px;
+            background-color: darkblue;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: navy;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Tech Blog</h1>
+    <h2>Computer Science and Engineering</h2>
+
+    <p>We are learning many programming languages like:</p>
+
+    <ul id="skillList">
+        <li>Python</li>
+        <li>C</li>
+        <li>Java</li>
+    </ul>
+
+    <br>
+    <button onclick="addSkill()">Add Skill</button>
+
+    <script>
+        function addSkill() {
+            let skill = prompt("Enter a new skill/programming language:");
+
+            if (skill) {
+                let li = document.createElement("li");
+                li.textContent = skill;
+
+                document.getElementById("skillList").appendChild(li);
+
+                alert(skill + " added successfully!");
+            } else {
+                alert("No skill entered!");
+            }
+        }
+    </script>
+
+</body>
+</html>
