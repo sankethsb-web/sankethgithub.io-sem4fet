@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu and List Box</title>
+</head>
+<body>
+
+<h2>Sanketh SB - Course Selection</h2>
+
+<label>Select Course:</label>
+
+<select id="course">
+    <option>HTML</option>
+    <option>CSS</option>
+    <option>JavaScript</option>
+</select>
+
+<br><br>
+
+<label>Select City:</label>
+
+<select id="city" size="3">
+    <option>Mangalore</option>
+    <option>Bangalore</option>
+    <option>Mysore</option>
+</select>
+
+<p id="output"></p>
+
+<script>
+document.getElementById("course").addEventListener("change", display);
+
+document.getElementById("city").addEventListener("change", display);
+
+function display()
+{
+    let course = document.getElementById("course").value;
+    let city = document.getElementById("city").value;
+
+    document.getElementById("output").innerHTML =
+    "Selected Course: " + course + "<br>" +
+    "Selected City: " + city;
+}
+</script>
+
+</body>
+</html>
