@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanketh SB Portfolio</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#0f172a;
+            color:white;
+        }
+
+        header{
+            background:#1e293b;
+            padding:20px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        header h1{
+            color:#38bdf8;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+            transition:0.3s;
+        }
+
+        nav a:hover{
+            color:#38bdf8;
+        }
+
+        .hero{
+            height:90vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:20px;
+        }
+
+        .hero h2{
+            font-size:50px;
+            margin-bottom:20px;
+        }
+
+        .hero span{
+            color:#38bdf8;
+        }
+
+        .hero p{
+            max-width:600px;
+            line-height:1.6;
+            margin-bottom:30px;
+        }
+
+        .btn{
+            padding:12px 25px;
+            background:#38bdf8;
+            color:black;
+            text-decoration:none;
+            border-radius:8px;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:white;
+        }
+
+        section{
+            padding:80px 20px;
+            text-align:center;
+        }
+
+        .card-container{
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+            margin-top:30px;
+        }
+
+        .card{
+            background:#1e293b;
+            padding:25px;
+            width:280px;
+            border-radius:12px;
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-10px);
+        }
+
+        footer{
+            background:#1e293b;
+            text-align:center;
+            padding:20px;
+            margin-top:50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Sanketh SB</h1>
+
+        <nav>
+            <a href="https://sankethsb-web.github.io/sankethgithub.io-sem4fet/">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Hello, I'm <span>Sanketh SB</span></h2>
+
+        <p>
+            Welcome to my personal portfolio website.
+            I am passionate about web development,
+            coding, and creating modern websites.
+        </p>
+
+        <a class="btn"
+           href="https://sankethsb-web.github.io/sankethgithub.io-sem4fet/"
+           target="_blank">
+           Visit Homepage
+        </a>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+
+        <div class="card-container">
+            <div class="card">
+                <h3>Web Developer</h3>
+                <p>
+                    Creating responsive and modern websites
+                    using HTML, CSS, and JavaScript.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Designer</h3>
+                <p>
+                    Designing clean and attractive user interfaces
+                    for better user experience.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Student</h3>
+                <p>
+                    Learning new technologies and improving
+                    programming skills every day.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="card-container">
+
+            <div class="card">
+                <h3>Portfolio Website</h3>
+
+                <p>
+                    Personal portfolio website created by
+                    Sanketh SB.
+                </p>
+
+                <br>
+
+                <a class="btn"
+                   href="https://sankethsb-web.github.io/sankethgithub.io-sem4fet/"
+                   target="_blank">
+                   Open
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>Circle Calculator</h3>
+
+                <p>
+                    Calculates area and circumference of circles
+                    using JavaScript.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Mini Projects</h3>
+
+                <p>
+                    Multiple web development mini projects
+                    using frontend technologies.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+
+        <p>Email: sankethsb@example.com</p>
+
+        <br>
+
+        <a class="btn"
+           href="https://sankethsb-web.github.io/sankethgithub.io-sem4fet/"
+           target="_blank">
+           Go To Homepage
+        </a>
+    </section>
+
+    <footer>
+        <p>© 2026 Sanketh SB | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
