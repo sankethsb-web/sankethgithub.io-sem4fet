@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bus Ticket Booking</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #f2f2f2;
+    }
+
+    header {
+      background: #1e88e5;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .box {
+      flex: 1;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    .seats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .seat {
+      padding: 10px;
+      background: #ddd;
+      text-align: center;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .seat.selected {
+      background: green;
+      color: white;
+    }
+
+    .seat.booked {
+      background: red;
+      color: white;
+      cursor: not-allowed;
+    }
+
+    .btn {
+      background: #1e88e5;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>🚌 Bus Ticket Booking System</header>
+
+<div class="container">
+
+  <!-- LEFT: Booking -->
+  <div class="box">
+    <h3>Select Route</h3>
+
+    <select id="route">
+      <option value="100">Bantwal → Mangalore (₹100)</option>
+      <option value="200">Bantwal → Udupi (₹200)</option>
+      <option value="300">Mangalore → Bengaluru (₹400)</option>
+    </select>
+
+    <h3>Select Seats</h3>
+
+    <div class="seats" id="seatContainer"></div>
+
+    <p class="total">Total: ₹<span id="total">0</span></p>
+
+    <button class="btn" onclick="bookTicket()">Book Ticket</button>
+  </div>
+
+  <!-- RIGHT: Status -->
+  <div class="box">
+    <h3>Booking Summary</h3>
+    <div id="summary">No booking yet</div>
+  </div>
+
+</div>
+
+<script>
+  let seats = [];
+  let selectedSeats = [];
+
+  // create seats
+  function createSeats() {
+    const container = document.getElementById("seatContainer");
+
+    for (let i = 1; i <= 16; i++) {
+      let seat = document.createElement("div");
+      seat.classList.add("seat");
+      seat.innerText = i;
+
+      seat.onclick = () => toggleSeat(seat, i);
+
+      container.appendChild(seat);
+      seats.push(seat);
+    }
+  }
+
+  function toggleSeat(seat, number) {
+    if (seat.classList.contains("booked")) return;
+
+    if (seat.classList.contains("selected")) {
+      seat.classList.remove("selected");
+      selectedSeats = selectedSeats.filter(s => s !== number);
+    } else {
+      seat.classList.add("selected");
+      selectedSeats.push(number);
+    }
+
+    updateTotal();
+  }
+
+  function updateTotal() {
+    let routePrice = document.getElementById("route").value;
+    let total = selectedSeats.length * routePrice;
+    document.getElementById("total").innerText = total;
+  }
+
+  document.getElementById("route").onchange = updateTotal;
+
+  function bookTicket() {
+    if (selectedSeats.length === 0) {
+      alert("Please select seats!");
+      return;
+    }
+
+    let route = document.getElementById("route").options[document.getElementById("route").selectedIndex].text;
+    let total = document.getElementById("total").innerText;
+
+    // mark booked seats
+    seats.forEach((seat, index) => {
+      if (selectedSeats.includes(index + 1)) {
+        seat.classList.remove("selected");
+        seat.classList.add("booked");
+      }
+    });
+
+    document.getElementById("summary").innerHTML = `
+      <p><b>Route:</b> ${route}</p>
+      <p><b>Seats:</b> ${selectedSeats.join(", ")}</p>
+      <p><b>Total:</b> ₹${total}</p>
+      <p style="color:green;">Booking Confirmed 🎉</p>
+    `;
+
+    selectedSeats = [];
+    updateTotal();
+  }
+
+  createSeats();
+</script>
+
+</body>
+</html>
