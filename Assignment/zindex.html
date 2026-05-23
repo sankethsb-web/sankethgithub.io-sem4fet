@@ -1,0 +1,49 @@
+
+            top: 150px;
+            left: 150px;
+            z-index: 2;
+        }
+
+        button {
+
+            margin-top: 400px;
+            margin-left: 100px;
+            padding: 12px 20px;
+            border: none;
+            background: black;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div id="box1" class="box">BOX 1</div>
+
+<div id="box2" class="box">BOX 2</div>
+
+<button onclick="changeLayer()">Change z-index</button>
+
+<script>
+
+function changeLayer() {
+
+    let box1 = document.getElementById("box1");
+
+    let box2 = document.getElementById("box2");
+
+    box1.style.zIndex = "3";
+
+    box2.style.zIndex = "1";
+
+    alert("Box 1 moved to front!");
+
+}
+
+</script>
+
+</body>
+</html>
